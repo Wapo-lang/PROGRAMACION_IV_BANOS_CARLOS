@@ -1,10 +1,7 @@
 # Programación IV
-
-**Autor:** [Nombre del Autor / Estudiante]  
-**Institución / Carrera:** [Nombre de la Universidad o Instituto]  
-**Año / Semestre:** [Año / Semestre Actual]  
-
----
+**Autor:** Carlos Baños  
+**Institución / Carrera:** Universidad UTE / Desarrollo de Software
+**Año / Semestre:** 2026 / Cuarto Semestre
 
 ## 🎯 Objetivo Principal
 
