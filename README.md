@@ -1,10 +1,7 @@
 # Programación IV
-
 **Autor:** Carlos Baños  
 **Institución / Carrera:** Universidad UTE / Desarrollo de Software
 **Año / Semestre:** 2026 / Cuarto Semestre
-
----
 
 ## 🎯 Objetivo Principal
 
