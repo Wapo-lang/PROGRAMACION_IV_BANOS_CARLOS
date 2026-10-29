@@ -1,93 +1,65 @@
-import { StyleSheet, Text, View } from 'react-native'
+// app/index.tsx — añade esto debajo de los estilos
+import { FlatList, SafeAreaView, StyleSheet, Text, View } from 'react-native'
+import { Paso1FilaServidor } from './paso1FilaServidor'
 
-interface TarjetaServidorProps {
+export type Servidor = {
+  id: string
   nombre: string
   ip: string
-  sistema: string
-  puerto: number
-  region?: string
+  activo: boolean
 }
 
-function TarjetaServidor({ nombre, ip, sistema, puerto, region }: TarjetaServidorProps) {
-  return (
-    <View style={styles.tarjeta}>
-      <Text style={styles.nombreServidor}>{nombre}</Text>
-      <Text style={styles.datoDireccion}>{ip}:{puerto}</Text>
-      <Text style={styles.datoSistema}>{sistema}</Text>
-      <Text style={styles.datoRegion}>{region ?? 'sin región'}</Text>
-    </View>
-  )
-}
+const SERVIDORES: Servidor[] = [
+  { id: '1', nombre: 'web-01',   ip: '10.0.2.10', activo: true  },
+  { id: '2', nombre: 'web-02',   ip: '10.0.2.11', activo: true  },
+  { id: '3', nombre: 'db-primario', ip: '10.0.3.20', activo: true  },
+  { id: '4', nombre: 'db-replica',  ip: '10.0.3.21', activo: false },
+  { id: '5', nombre: 'cache-01',    ip: '10.0.4.10', activo: true  },
+  { id: '6', nombre: 'cache-02',    ip: '10.0.4.11', activo: false },
+  { id: '7', nombre: 'lb-01',       ip: '10.0.1.1',  activo: true  },
+  { id: '8', nombre: 'bastion',     ip: '203.0.113.5', activo: true },
+]
 
 export function Paso1() {
   return (
-    <View style={styles.fondo}>
-      <Text style={styles.encabezado}>Inventario de servidores</Text>
-      <TarjetaServidor
-        nombre="web-01"
-        ip="10.0.2.10"
-        sistema="Ubuntu 24.04 LTS"
-        puerto={22}
-        region="us-east-1"
+    <SafeAreaView style={styles1.contenedor}>
+      <Text style={styles1.titulo}>Inventario de servidores</Text>
+      <FlatList<Servidor>
+        data={SERVIDORES}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => <Paso1FilaServidor servidor={item} />}
       />
-      <TarjetaServidor
-        nombre="db-primary"
-        ip="10.0.2.20"
-        sistema="Debian 12"
-        puerto={5432}
-        region="eu-west-1"
-      />
-      <TarjetaServidor
-        nombre="cache-01"
-        ip="10.0.2.30"
-        sistema="Alpine 3.19"
-        puerto={6379}
-      />
-    </View>
+    </SafeAreaView>
   )
 }
 
-const styles = StyleSheet.create({
-  fondo: {
-    flex: 1,
-    backgroundColor: '#f0f4f8',
-    padding: 20,
-    paddingTop: 60,
-    gap: 12,
-  },
-  encabezado: {
+const styles1 = StyleSheet.create({
+  contenedor: { flex: 1, backgroundColor: '#f0f4f8' },
+  titulo: {
     fontSize: 20,
     fontWeight: '700',
-    color: '#1a237e',
-    marginBottom: 4,
-  },
-  tarjeta: {
-    backgroundColor: '#ffffff',
-    borderRadius: 10,
     padding: 16,
-    gap: 4,
-    shadowColor: '#000',
-    shadowOpacity: 0.06,
-    shadowRadius: 4,
-    shadowOffset: { width: 0, height: 2 },
-    elevation: 2,
+    backgroundColor: '#1565c0',
+    color: '#fff',
   },
-  nombreServidor: {
-    fontSize: 16,
-    fontWeight: '600',
-    color: '#1a1a1a',
+  fila: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#fff',
+    marginHorizontal: 12,
+    marginTop: 8,
+    borderRadius: 8,
+    padding: 12,
   },
-  datoDireccion: {
-    fontSize: 13,
-    color: '#1565c0',
-    fontFamily: 'serif',
+  info: { flex: 1 },
+  nombre: { fontSize: 15, fontWeight: '600', color: '#1a1a1a' },
+  ip: { fontSize: 12, color: '#666', marginTop: 2 },
+  estado: {
+    borderRadius: 4,
+    paddingVertical: 4,
+    paddingHorizontal: 8,
   },
-  datoSistema: {
-    fontSize: 12,
-    color: '#757575',
-  },
-  datoRegion: {
-    fontSize: 12,
-    color: '#546e7a',
-  },
+  estadoActivo: { backgroundColor: '#e8f5e9' },
+  estadoInactivo: { backgroundColor: '#ffebee' },
+  textoEstado: { fontSize: 11, fontWeight: '700' },
 })
