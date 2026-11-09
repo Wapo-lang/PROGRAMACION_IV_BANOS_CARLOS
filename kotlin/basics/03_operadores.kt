@@ -1,3 +1,4 @@
+const val COMBUSTIBLE_MINIMO = 50
 fun main(){
     println("Operadores")
     println("Operadores Aritmeticos")
@@ -39,5 +40,42 @@ fun main(){
     println("Menor o igual que <= ${10<=10}")
     println("Menor o igual que <= ${5<=10}")
 
-}
+    println("Operadores lógicos")
+    println("&& and Y")
+    println("|| and OR")
+    println("! NOT")
 
+    val combustible1 = 80
+    val portalActivo = true
+
+    val puedeViajar = combustible1 >= 50 && portalActivo
+
+    val negado = !portalActivo
+
+    println("Puede Viajar? $puedeViajar")
+    println("Negado ? $negado")
+
+    val tieneTarjeta = false
+    val autorizadoPorRick = true
+    val puedeEntrar = tieneTarjeta || autorizadoPorRick
+
+    println("Puede entrar? $puedeEntrar")
+
+    println("Control de nave - Rick Sanchez y Carlos Baños")
+    val pilotoNave = 100
+    var combustibleNave = 20
+    var portalUniverso = 5
+    val motorActivoNave = true
+    println("Piloto: $pilotoNave")
+    combustibleNave += 40
+    portalUniverso--
+    println("Combustible: $combustibleNave")
+    println("Portales Restantes: $portalUniverso")
+    val tieneCombustible = combustibleNave >= COMBUSTIBLE_MINIMO
+    val tienePortales = portalUniverso >= 0
+    val puedeViajarNave = tieneCombustible && tienePortales && motorActivoNave
+    println("Tiene Combustible? $tieneCombustible")
+    println("Tiene Portales? $tienePortales")
+    println("Puede Viajar? $puedeViajarNave")
+
+}
