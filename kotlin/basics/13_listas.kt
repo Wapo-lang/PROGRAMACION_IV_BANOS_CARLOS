@@ -17,5 +17,5 @@ fun main(){
     }
     val costos = listOf(100,150,200,80,120)
     val total = calcularTotal(costos)
-    println("Costo total de herramientas de Christian Cañar: $total")
+    println("Costo total de herramientas de Carlos Bañosr: $total")
 }

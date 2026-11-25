@@ -4,7 +4,7 @@ fun activarPortal(){
     println("3")
     println("2")
     println("1")
-    println("Christian Cañar activó el Portal")
+    println("Carlos Baños activó el Portal")
 }
 
 fun viajar(dimension: String,viajes: Int,consumo: Int){
