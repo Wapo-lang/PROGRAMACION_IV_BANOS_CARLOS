@@ -79,3 +79,4 @@ fun main(){
     println("Puede Viajar? $puedeViajarNave")
 
 }
+
